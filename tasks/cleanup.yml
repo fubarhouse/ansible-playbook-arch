@@ -1,0 +1,11 @@
+---
+
+- name: Cleanup | Remove aur_builder user
+  user:
+    name: aur_builder
+    state: absent
+
+- name: Cleanup | Remove aur_builder sudoer file
+  file:
+    path: /etc/sudoers.d/11-install-aur_builder
+    state: absent
