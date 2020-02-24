@@ -1,0 +1,54 @@
+
+- set_fact:
+    use_nvidia: yes
+
+- name: Xorg | Video Drivers | Install
+  aur:
+    use: yay
+    name: nvidia
+  when: use_nvidia
+
+- name: Xorg | Video Drivers | Configure
+  become: yes
+  become_user: root
+  command: nvidia-xconfig
+  when: use_nvidia
+
+- name: Xorg | Video Drivers | Copy NVIDIA Config
+  copy:
+    src: /etc/X11/xorg.conf
+    dest: /etc/X11/xorg.conf.d/20-nvidia.conf
+  when: use_nvidia
+
+- name: Xorg | Video Drivers | Remove Temporary NVIDIA Config
+  file:
+    path: /etc/X11/xorg.conf
+    state: absent
+  when: use_nvidia
+
+- name: Xorg | Video Drivers | Configure Devices
+  lineinfile:
+    path: /etc/X11/xorg.conf.d/20-nvidia.conf
+    regexp: '^Section "Device"'
+    insertafter: '^Section "Device"'
+    line: "{{ item }}"
+  with_items:
+    - '    Option         "TripleBuffer" "on"'
+    - '    Option         "Coolbits" "28"'
+  when: use_nvidia
+
+- name: Xorg | Video Drivers | Configure Screens
+  lineinfile:
+    path: /etc/X11/xorg.conf.d/20-nvidia.conf
+    regexp: '^Section "Screen"'
+    insertafter: '^Section "Screen"'
+    line: "{{ item }}"
+  with_items:
+    - '    Option         "metamodes" "nvidia-auto-select +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"'
+    - '    Option         "AllowIndirectGLXProtocol" "off"'
+  when: use_nvidia
+
+#   ```eof```
+#   Section "Extensions"
+#     Option         "Composite" "Disable"
+#   EndSection
