@@ -7,5 +7,7 @@
       include: tasks/setup.yml
     - name: Include mirror tasks
       include: tasks/mirrors.yml
+    - name: Include tasks for archfi & archdi
+      include: tasks/archibins.yml
     - name: Include yay tasks
       include: tasks/yay.yml
