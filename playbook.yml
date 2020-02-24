@@ -8,13 +8,13 @@
       include: tasks/setup.yml
 
     - name: Include user tasks
-      include: tasks/user.yml
+      include: tasks/config/user.yml
 
     - name: Include mirror tasks
-      include: tasks/mirrors.yml
+      include: tasks/config/mirrors.yml
 
     - name: Include tasks for archfi & archdi
-      include: tasks/archibins.yml
+      include: tasks/install/archibins.yml
 
     - name: Include yay tasks
       include: tasks/yay.yml
