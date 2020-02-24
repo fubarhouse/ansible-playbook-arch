@@ -1,5 +1,6 @@
 ---
-- name: Install/update packages
+
+- name: Package Install/Update
   aur:
     use: yay
     name:

@@ -1,3 +1,5 @@
+---
+
 - name: Xorg | Video Drivers | Install packages
   aur:
     use: yay
