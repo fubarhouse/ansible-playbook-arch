@@ -1,0 +1,32 @@
+---
+
+# Update the /etc/pacman.d/mirrorlist file to match the official list.
+# A backup file will be placed at /etc/pacman.d/mirrorslist.backup.
+
+- name: Pacman Mirrors | Download pacman-contrib
+  pacman:
+    name: pacman-contrib
+    state: present
+
+- name: Pacman Mirrors | Backup the mirrors list file
+  copy:
+    remote_src: yes
+    src: /etc/pacman.d/mirrorlist
+    dest: /etc/pacman.d/mirrorlist.backup
+
+- name: Pacman Mirrors | Remove the old mirrors list file
+  file:
+    path: /etc/pacman.d/mirrorlist
+    state: absent
+  
+- name: Pacman Mirrors | Download a new mirrors list file
+  get_url:
+    url: "https://www.archlinux.org/mirrorlist/?country={{ countrycode|default('AU') }}&protocol=https&use_mirror_status=on"
+    dest: /etc/pacman.d/mirrorlist
+
+- name: Patch the new mirrors list file
+  replace:
+    path: /etc/pacman.d/mirrorlist
+    regexp: '^#Server'
+    before: '#Server'
+    after: 'Server'

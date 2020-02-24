@@ -3,5 +3,7 @@
 
 - hosts: arch
   tasks:
+    - name: Include mirror tasks
+      include: tasks/mirrors.yml
     - name: Include yay tasks
       include: tasks/yay.yml
