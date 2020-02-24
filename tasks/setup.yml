@@ -1,0 +1,32 @@
+---
+- name: Pacman | Install fakeroot
+  pacman:
+    state: present
+    name: fakeroot
+
+- name: Pacman | Install sudo
+  pacman:
+    state: present
+    name: sudo
+
+- name: Pacman | Install binutils
+  pacman:
+    state: present
+    name: binutils
+
+- name: Pacman | Install diffutils
+  pacman:
+    state: present
+    name: diffutils
+
+- name: Pacman | Add user for yay installation
+  user:
+    name: aur_builder
+    group: wheel
+
+- name: Pacman | Make user sudoer
+  lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: yes
+    validate: 'visudo -cf %s'
