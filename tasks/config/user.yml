@@ -1,0 +1,37 @@
+---
+
+- set_fact:
+    users_to_add:
+      - karl
+    users_to_remove: []
+    users_to_sudoers:
+      - karl
+
+- name: Users | Create
+  user:
+    name: "{{ item }}"
+    home: "{{ item }}"
+    state: present
+  with_items: "{{ users_to_add }}"
+  failed_when: false
+
+- name: Users | Remove
+  user:
+    name: "{{ item }}"
+    home: "{{ item }}"
+    state: present
+  with_items: "{{ users_to_remove }}"
+  failed_when: false
+
+- name: Users | Create sudoer file
+  file:
+    path: "/etc/sudoers.d/{{ item }}"
+    state: touch
+    mode: g=r,o=r
+  with_items: "{{ users_to_add }}"
+
+- name: Users | Configure sudoer file
+  lineinfile: 
+    dest: "/etc/sudoers.d/{{ item }}"
+    line: "{{ item }} ALL=(ALL) ALL"
+  with_items: "{{ users_to_sudoers }}"
