@@ -3,30 +3,52 @@
 # Update the /etc/pacman.d/mirrorlist file to match the official list.
 # A backup file will be placed at /etc/pacman.d/mirrorslist.backup.
 
-- name: Pacman Mirrors | Download pacman-contrib
-  pacman:
-    name: pacman-contrib
-    state: present
+- name: Pacman Mirrors | Download a new mirrors list file
+  get_url:
+    url: "https://www.archlinux.org/mirrorlist/?country={{ countrycode|default('US') }}&protocol=https&use_mirror_status=on"
+    dest: /etc/pacman.d/mirrorlist.new
+  changed_when: false
+  
+- name: Pacman Mirrors | Patch the new mirrors list file
+  replace:
+    path: /etc/pacman.d/mirrorlist.new
+    regexp: '^#Server'
+    replace: 'Server'
+  changed_when: false
+
+- name: Pacman Mirrors | Compare the old file to the new one
+  command: diff /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.new
+  register: diffresult
+  changed_when: false
+  failed_when: false
 
 - name: Pacman Mirrors | Backup the mirrors list file
   copy:
     remote_src: yes
     src: /etc/pacman.d/mirrorlist
     dest: /etc/pacman.d/mirrorlist.backup
+  when: diffresult.failed
+
+- name: Pacman Mirrors | Move the newmirrors list file into place
+  copy:
+    remote_src: yes
+    src: /etc/pacman.d/mirrorlist.new
+    dest: /etc/pacman.d/mirrorlist
+  when: diffresult.failed
 
 - name: Pacman Mirrors | Remove the old mirrors list file
   file:
     path: /etc/pacman.d/mirrorlist
     state: absent
-  
-- name: Pacman Mirrors | Download a new mirrors list file
-  get_url:
-    url: "https://www.archlinux.org/mirrorlist/?country={{ countrycode|default('AU') }}&protocol=https&use_mirror_status=on"
-    dest: /etc/pacman.d/mirrorlist
+  when: diffresult.failed
 
-- name: Patch the new mirrors list file
-  replace:
-    path: /etc/pacman.d/mirrorlist
-    regexp: '^#Server'
-    before: '#Server'
-    after: 'Server'
+- name: Pacman Mirrors | Remove the temporary mirrors list file
+  file:
+    path: /etc/pacman.d/mirrorlist.new
+    state: absent
+  changed_when: false
+
+- name: Pacman Mirrors | Update Pacman repositories
+  pacman:
+    update_cache: yes
+  when: diffresult.failed
