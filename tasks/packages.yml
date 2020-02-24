@@ -1,0 +1,55 @@
+---
+- name: Install/update packages
+  aur:
+    use: yay
+    name:
+      # dev
+      - code
+      - goland
+      - phpstorm
+      - webstorm
+      # graphic
+      # internet/webbrowser
+      - firefox
+      # multimedia/videoplayer
+      - vlc
+      # system/system
+      - wine
+
+
+
+      # games
+      - wolf-data-steam
+      - wolf3d-data-steam
+      # games/other
+      - nvidia
+      - nvidia-settings
+      - nvidia-utils
+      - lib32-nvidia-utils
+      - lib32-opencl-nvidia
+      - opencl-nvidia
+      - libvdpau
+      - libxnvctrl
+      - vulkan-icd-loader
+      - lib32-vulkan-icd-loader
+      - gamemode
+      - steam
+
+    #   sudo nvidia-xconfig
+    #   sudo mv /etc/X11/xorg.conf /etc/X11/xorg.conf.d/20-nvidia.conf
+    #   sudo nano  /etc/X11/xorg.conf.d/20-nvidia.conf
+
+    #   ```device```
+    #   Option         "TripleBuffer" "on"
+    #   Option         "Coolbits" "28"
+
+    #   ```screen```
+    #   Option         "metamodes" "nvidia-auto-select +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
+    #   Option         "AllowIndirectGLXProtocol" "off"
+
+    #   ```eof```
+    #   Section "Extensions"
+    #     Option         "Composite" "Disable"
+    #   EndSection
+
+    #   sudo rm /etc/X11/xorg.conf.d/20-nvidia.conf

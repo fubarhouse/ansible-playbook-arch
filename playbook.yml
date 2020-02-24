@@ -1,0 +1,60 @@
+- hosts: arch
+  tasks:
+    - name: Include yay tasks
+      include: tasks/yay.yml
+#   tasks:
+#     - user:
+#         name: aur_builder
+#         group: wheel
+#     - lineinfile:
+#         path: /etc/sudoers.d/11-install-aur_builder
+#         line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+#         create: yes
+#         validate: 'visudo -cf %s'
+#     - pacman:
+#         state: present
+#         name: fakeroot
+#     # - pacman:
+#     #     state: present
+#     #     name: python3
+#     - pacman:
+#         state: present
+#         name: tar
+#     - pacman:
+#         state: present
+#         name: sudo
+#     - pacman:
+#         state: present
+#         name: binutils
+#     - name: do stuff
+#       become: yes
+#       become_user: aur_builder
+#       aur:
+#         name: yay-bin
+#     - name: setup yay
+#       aur:
+#         use: yay
+#         name:
+#             - bash
+#             - ca-certificates-mozilla
+#             - gcc-libs
+#             - glib2
+#             - glibc
+#             - gmp
+#             - gnutls
+#             - hwids
+#             - iana-etc
+#             - libarchive
+#             - libcap
+#             - libgpg-error
+#             - libldap
+#             - libtasn1
+#             - linux-api-headers
+#             - ncurses
+#             - pacman-mirrorlist
+#             - readline
+#             - shadow
+#             - systemd
+#             - systemd-libs
+
+# # python3
