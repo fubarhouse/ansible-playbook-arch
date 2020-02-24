@@ -51,8 +51,8 @@
 
 - name: Display Manager | Plasma | Disable Display Managers
   service:
-    name: gdm
-    state: disabled
+    name: "{{ item }}"
+    enabled: no
   ignore_errors: yes
   with_items:
     - gdm
@@ -62,4 +62,4 @@
 - name: Display Manager | Plasma | Enable SDDM
   service:
     name: sddm
-    state: enabled
+    enabled: yes

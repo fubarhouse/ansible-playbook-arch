@@ -18,8 +18,8 @@
 
 - name: Display Manager | LXQT | Disable Display Managers
   service:
-    name: gdm
-    state: disabled
+    name: "{{ item }}"
+    enabled: no
   ignore_errors: yes
   with_items:
     - gdm
@@ -29,4 +29,4 @@
 - name: Display Manager | LXQT | Enable SDDM
   service:
     name: sddm
-    state: enabled
+    enabled: yes

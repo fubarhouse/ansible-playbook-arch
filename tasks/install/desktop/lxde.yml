@@ -8,8 +8,8 @@
 
 - name: Display Manager | Plasma | Disable Display Managers
   service:
-    name: gdm
-    state: disabled
+    name: "{{ item }}"
+    enabled: no
   ignore_errors: yes
   with_items:
     - gdm
@@ -19,4 +19,4 @@
 - name: Display Manager | LXDE | Enable LXDM
   service:
     name: lxdm
-    state: enabled
+    enabled: yes
