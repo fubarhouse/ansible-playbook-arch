@@ -1,5 +1,6 @@
 ---
-- name: do stuff
+
+- name: Yay | Install
   become: yes
   become_user: aur_builder
   aur:
