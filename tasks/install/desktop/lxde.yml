@@ -1,11 +1,10 @@
 ---
 
-- name: Display Manager | Gnome | Install
+- name: Display Manager | LXDE | Install
   aur:
     use: yay
     name:
-      - gnome
-      - gnome-extra
+      - lxde
 
 - name: Display Manager | Plasma | Disable Display Managers
   service:
@@ -13,11 +12,11 @@
     state: disabled
   ignore_errors: yes
   with_items:
+    - gdm
     - lightdm
-    - lxdm
     - sddm
 
-- name: Display Manager | Gnome | Enable GDM
+- name: Display Manager | LXDE | Enable LXDM
   service:
-    name: gdm
+    name: lxdm
     state: enabled

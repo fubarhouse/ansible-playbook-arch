@@ -1,0 +1,9 @@
+---
+
+- name: Display Manager | Enlightenment | Install
+  aur:
+    use: yay
+    name:
+      - enlightenment
+      - connman
+      - acpid

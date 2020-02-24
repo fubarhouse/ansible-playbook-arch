@@ -1,0 +1,22 @@
+---
+
+- name: Display Manager | LXDE-GTK3 | Install
+  aur:
+    use: yay
+    name:
+      - lxde-gtk3
+
+- name: Display Manager | LXDE-GTK3 | Disable Display Managers
+  service:
+    name: gdm
+    state: disabled
+  ignore_errors: yes
+  with_items:
+    - gdm
+    - lightdm
+    - sddm
+
+- name: Display Manager | LXDE-GTK3 | Enable LXDM
+  service:
+    name: lxdm
+    state: enabled

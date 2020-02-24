@@ -1,0 +1,32 @@
+---
+
+- name: Display Manager | LXQT | Install
+  aur:
+    use: yay
+    name:
+      - lxqt
+
+- name: Display Manager | LXQT | Install Complements
+  aur:
+    use: yay
+    name:
+      - sddm
+      - oxygen-icons
+      - connman
+      - obconf
+      - lxqt-connman-applet-git
+
+- name: Display Manager | LXQT | Disable Display Managers
+  service:
+    name: gdm
+    state: disabled
+  ignore_errors: yes
+  with_items:
+    - gdm
+    - lightdm
+    - lxdm
+
+- name: Display Manager | LXQT | Enable SDDM
+  service:
+    name: sddm
+    state: enabled

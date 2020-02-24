@@ -4,6 +4,7 @@
   aur:
     use: yay
     name:
+      - plasma
       - bluedevil
       - breeze
       - breeze-gtk
@@ -47,4 +48,18 @@
       - systemsettings
       - user-manager
       - xdg-desktop-portal-kde
-  when: display_manager == 'plasma'
+
+- name: Display Manager | Plasma | Disable Display Managers
+  service:
+    name: gdm
+    state: disabled
+  ignore_errors: yes
+  with_items:
+    - gdm
+    - lightdm
+    - lxdm
+
+- name: Display Manager | Plasma | Enable SDDM
+  service:
+    name: sddm
+    state: enabled

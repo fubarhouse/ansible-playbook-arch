@@ -1,0 +1,8 @@
+---
+
+- name: Display Manager | Mate | Install
+  aur:
+    use: yay
+    name:
+      - mate
+      - mate-extra

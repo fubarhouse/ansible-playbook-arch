@@ -1,0 +1,8 @@
+---
+
+- name: Display Manager | OpenBox | Install
+  aur:
+    use: yay
+    name:
+      - openbox
+      - lxappearance-obconf

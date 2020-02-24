@@ -1,0 +1,8 @@
+---
+
+- name: Display Manager | Cinnamon | Install
+  aur:
+    use: yay
+    name:
+      - cinnamon
+      - gnome-terminal

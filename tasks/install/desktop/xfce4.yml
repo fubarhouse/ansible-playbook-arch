@@ -1,0 +1,28 @@
+---
+
+- name: Display Manager | XFCE4 | Install
+  aur:
+    use: yay
+    name:
+      - xfce4
+      - xfce4-goodies
+      - lightdm-gtk-greeter
+      - gvfs
+      - gvfs-afc
+      - udisks2
+      - network-manager-applet
+
+- name: Display Manager | Plasma | Disable Display Managers
+  service:
+    name: gdm
+    state: disabled
+  ignore_errors: yes
+  with_items:
+    - gdm
+    - lxdm
+    - sddm
+
+- name: Display Manager | XFCE4 | Enable LightDM
+  service:
+    name: lightdm
+    state: enabled

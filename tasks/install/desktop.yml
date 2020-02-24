@@ -1,0 +1,5 @@
+---
+
+- name: Display Manager | Include installation tasks
+  include: "desktop/{{ desktop }}.yml"
+  when: desktop is defined
