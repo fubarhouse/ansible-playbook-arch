@@ -11,4 +11,10 @@ run:
 clean:
 	docker rm archlinux;
 
+pause:
+	docker pause archlinux
+
+unpause:
+	docker unpause archlinux
+
 all: start setup run clean
