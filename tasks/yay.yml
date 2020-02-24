@@ -5,7 +5,8 @@
   become_user: aur_builder
   aur:
     name: yay-bin
-- name: setup yay
+
+- name: Yay | Configure
   aur:
     use: yay
     name:
