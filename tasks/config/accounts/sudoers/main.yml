@@ -4,7 +4,7 @@
     users_to_sudoers:
       - karl
 
-- name: Users | Touch sudoer file
+- name: Configuration | Accounts | Sudoers | Touch sudoer file
   file:
     path: "/etc/sudoers.d/{{ item }}"
     state: touch
@@ -12,7 +12,7 @@
   with_items: "{{ users_to_add }}"
   changed_when: false
 
-- name: Users | Configure sudoer file
+- name: Configuration | Accounts | Sudoers | Configure sudoer file
   lineinfile: 
     dest: "/etc/sudoers.d/{{ item }}"
     line: "{{ item }} ALL=(ALL) ALL"

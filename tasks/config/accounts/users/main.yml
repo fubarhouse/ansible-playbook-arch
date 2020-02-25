@@ -5,7 +5,7 @@
       - karl
       
 
-- name: Users | Create
+- name: Configuration | Accounts | Users | Create
   user:
     name: "{{ item }}"
     home: "{{ item }}"
