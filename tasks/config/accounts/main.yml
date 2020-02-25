@@ -1,0 +1,7 @@
+---
+
+- name: Include user tasks file
+  include: users/main.yml
+
+- name: Include sudoers tasks file
+  include: sudoers/main.yml

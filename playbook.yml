@@ -7,8 +7,8 @@
     - name: Include setup tasks
       include: tasks/setup.yml
 
-    - name: Include user tasks
-      include: tasks/config/user.yml
+    - name: Include account configuration tasks
+      include: tasks/config/accounts/main.yml
 
     - name: Include mirror tasks
       include: tasks/config/mirrors.yml
