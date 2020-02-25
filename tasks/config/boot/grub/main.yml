@@ -1,0 +1,7 @@
+---
+
+- set_fact:
+    configfile: /boot/grub/grub.cfg
+
+- name: Configuration | Boot | Grub
+  command: "grub-mkconfig -o {{ configfile }}"
