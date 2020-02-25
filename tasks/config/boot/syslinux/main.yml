@@ -1,0 +1,9 @@
+---
+
+- set_fact:
+  configfile: /boot/syslinux/syslinux.cfg
+
+- name: Configuration | Boot | SysLinux
+  file:
+    path: "{{ configfile }}"
+    state: touch

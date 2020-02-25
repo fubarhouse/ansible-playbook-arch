@@ -4,6 +4,4 @@
   configfile: /etc/mkinitcpio.con
 
 - name: Configuration | Boot | SysLinux
-  file:
-    path: "{{ configfile }}"
-    state: touch
+  command: "mkinitcpio -p {{ configfile }}"

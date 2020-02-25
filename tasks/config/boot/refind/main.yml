@@ -1,0 +1,28 @@
+---
+
+- set_fact:
+    configfile: /boot/refind_linux.conf
+
+- name: Configuration | Boot | Refind | Create/touch
+  file:
+    path: "{{ configfile }}"
+    state: touch
+
+- name: Configuration | Boot | Refind | Create Hooks Directory
+  file:
+    path: /etc/pacman.d/hooks
+    state: directory
+    recurse: yes
+
+- name: Configuration | Boot | Refind | Create pacman hook
+  template:
+    src: refind.hook.j2
+    dest: /etc/pacman.d/hooks/refind.hook
+
+- name: Configuration | Boot | Refind | Initialise/update
+  command: refind-install
+  
+- name: Configuration | Boot | Refind | Remove pacman hook
+  file:
+    path: /etc/pacman.d/hooks/refind.hook
+    state: absennt
