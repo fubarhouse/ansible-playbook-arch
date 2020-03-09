@@ -1,40 +1,7 @@
 ---
 
-- name: Arch-I-Files | Looking for archfi
-  stat:
-    path: /usr/local/bin/archfi
-  register: archfi_stat
-  changed_when: false
+- name: Arch-I-Files | Include Archdi
+  include: applications/archdi.yml
 
-- name: Arch-I-Files | Looking for archdi
-  stat:
-    path: /usr/local/bin/archdi
-  register: archdi_stat
-  changed_when: false
-
-- name: Arch-I-Files | Install dependencies
-  pacman:
-    name: 
-      - gpm
-      - slang
-      - arch-install-scripts
-      - libnewt
-      - wget
-    state: present
-  when:
-    - not archfi_stat.stat.exists
-    - not archdi_stat.stat.exists
-
-- name: Arch-I-Files | Download archfi
-  get_url:
-    url: http://archfi.sf.net/archfi
-    dest: /usr/local/bin/archfi
-    mode: '0700'
-  when: not archfi_stat.stat.exists
-
-- name: Arch-I-Files | Download archdi
-  get_url:
-    url: http://archdi.sf.net/archdi
-    dest: /usr/local/bin/archdi
-    mode: '0700'
-  when: not archdi_stat.stat.exists
+- name: Arch-I-Files | Include Archfi
+  include: applications/archfi.yml

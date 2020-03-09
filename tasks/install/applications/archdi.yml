@@ -1,0 +1,24 @@
+---
+
+- name: Archdi | Check
+  stat:
+    path: /usr/local/bin/archdi
+  register: archdi_stat
+  changed_when: false
+
+- name: Archdi | Dependencies
+  pacman:
+    name:
+      - gpm
+      - slang
+      - arch-install-scripts
+    state: present
+  when:
+    - not archdi_stat.stat.exists
+
+- name: Archdi | Download
+  get_url:
+    url: http://archdi.sf.net/archdi
+    dest: /usr/local/bin/archdi
+    mode: '0700'
+  when: not archdi_stat.stat.exists

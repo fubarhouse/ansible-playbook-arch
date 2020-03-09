@@ -1,0 +1,23 @@
+---
+
+- name: Archfi | Check
+  stat:
+    path: /usr/local/bin/archfi
+  register: archfi_stat
+  changed_when: false
+
+- name: Archfi | Dependencies
+  pacman:
+    name:
+      - libnewt
+      - wget
+    state: present
+  when:
+    - not archfi_stat.stat.exists
+
+- name: Archfi | Download
+  get_url:
+    url: http://archfi.sf.net/archfi
+    dest: /usr/local/bin/archfi
+    mode: '0700'
+  when: not archfi_stat.stat.exists
