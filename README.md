@@ -23,6 +23,10 @@ $ docker run -td --name archlinux archlinux && \
   ansible-playbook -i inventory playbook.yml
 ```
 
+## Notes
+
+I run Arch BTW.
+
 ## Thanks
 
 Finally, thanks [MatMoul](https://github.com/MatMoul) for his efforts in maintaining [archfi](https://github.com/MatMoul/archfi) and [archdi](https://github.com/MatMoul/archdi).
