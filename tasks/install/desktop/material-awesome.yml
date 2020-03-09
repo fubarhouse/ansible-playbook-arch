@@ -1,0 +1,35 @@
+---
+
+- name: Display Manager | MaterialAwesome | Install
+  aur:
+    use: yay
+    name:
+      - awesome
+      - ttf-roboto
+      - rofi
+      - compton
+      - i3lock-fancy
+      - xclip
+      - gnome-keyring-daemon
+      - policykit-agent
+      - pa-applet-git
+      - qt5-styles-gtk2
+      - materia-gtk-theme
+      - papirus-icon-theme
+      - lxappearance
+      - kde-spectacle
+      - qt5-styleplugins
+
+- name: Display Manager | MaterialAwesome | Configure
+  git:
+    repo: https://github.com/ChrisTitusTech/material-awesome.git
+    dest: ~/.config/awesome
+
+- name: Display Manager | MaterialAwesome | Environment
+  lineinfile:
+    path: /etc/environment
+    regexp: "{{ item }}"
+    line: "{{ item }}"
+    with_items:
+      - 'XDG_CURRENT_DESKTOP=Unity'
+      - 'QT_QPA_PLATFORMTHEME=gtk2'
