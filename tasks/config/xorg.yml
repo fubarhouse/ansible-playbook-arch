@@ -7,25 +7,25 @@
   aur:
     use: yay
     name: nvidia
-  when: use_nvidia
+  when: use_nvidia && xorg_configure
 
 - name: Xorg | Video Drivers | Configure
   become: yes
   become_user: root
   command: nvidia-xconfig
-  when: use_nvidia
+  when: use_nvidia && xorg_configure
 
 - name: Xorg | Video Drivers | Copy NVIDIA Config
   copy:
     src: /etc/X11/xorg.conf
     dest: /etc/X11/xorg.conf.d/20-nvidia.conf
-  when: use_nvidia
+  when: use_nvidia && xorg_configure
 
 - name: Xorg | Video Drivers | Remove Temporary NVIDIA Config
   file:
     path: /etc/X11/xorg.conf
     state: absent
-  when: use_nvidia
+  when: use_nvidia && xorg_configure
 
 - name: Xorg | Video Drivers | Configure Devices
   lineinfile:
@@ -36,7 +36,7 @@
   with_items:
     - '    Option         "TripleBuffer" "on"'
     - '    Option         "Coolbits" "28"'
-  when: use_nvidia
+  when: use_nvidia && xorg_configure
 
 - name: Xorg | Video Drivers | Configure Screens
   lineinfile:
@@ -47,7 +47,7 @@
   with_items:
     - '    Option         "metamodes" "nvidia-auto-select +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"'
     - '    Option         "AllowIndirectGLXProtocol" "off"'
-  when: use_nvidia
+  when: use_nvidia && xorg_configure
 
 #   ```eof```
 #   Section "Extensions"
