@@ -1,8 +1,17 @@
 # Arch Ansible Playbook
 
+> This is a WIP project for Automation of Arch setups.
+>   - Default variables are not provided
+>   - Logic and much else is not tested or completed
+>   - Use at your own risk
+
 ## Background
 
 This is a loosely inspired port of some of the functionality superb tools [archfi](https://github.com/MatMoul/archfi) & [archdi](https://github.com/MatMoul/archdi) for Ansible. It does not however cover functionality provided by archfi.
+
+It's expected that the devices are mounted to the desired configuration when the playbook's execution starts.
+
+**Using this playbook comes with no warranty, use it at your own risk - I am not responsible if your system breaks to any degree - it comes with an MIT license.**  
 
 ## Testing
 
