@@ -2,7 +2,7 @@
 
 - name: Display Manager | XFCE4 | Install
   aur:
-    use: yay
+    use: "{{ package_manager|default('yay') }}"
     name:
       - xfce4
       - xfce4-goodies

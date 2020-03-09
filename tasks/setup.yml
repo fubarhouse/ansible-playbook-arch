@@ -20,7 +20,7 @@
     state: present
     name: diffutils
 
-- name: Pacman | Add user for yay installation
+- name: Pacman | Add user for aur installation
   user:
     name: aur_builder
     group: wheel

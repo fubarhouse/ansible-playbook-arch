@@ -18,6 +18,7 @@
 
     - name: Include yay tasks
       include: tasks/install/yay.yml
+      when: package_manager|default('yay') == 'yay'
 
     - name: Include desktop installation tasks
       include: tasks/install/desktop.yml

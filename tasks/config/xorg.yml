@@ -5,7 +5,7 @@
 
 - name: Xorg | Video Drivers | Install
   aur:
-    use: yay
+    use: "{{ package_manager|default('yay') }}"
     name: nvidia
   when: use_nvidia && xorg_configure
 

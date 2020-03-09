@@ -2,7 +2,7 @@
 
 - name: Display Manager | Mate | Install
   aur:
-    use: yay
+    use: "{{ package_manager|default('yay') }}"
     name:
       - mate
       - mate-extra

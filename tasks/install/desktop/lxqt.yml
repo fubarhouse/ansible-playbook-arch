@@ -2,13 +2,13 @@
 
 - name: Display Manager | LXQT | Install
   aur:
-    use: yay
+    use: "{{ package_manager|default('yay') }}"
     name:
       - lxqt
 
 - name: Display Manager | LXQT | Install Complements
   aur:
-    use: yay
+    use: "{{ package_manager|default('yay') }}"
     name:
       - sddm
       - oxygen-icons

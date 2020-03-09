@@ -2,7 +2,7 @@
 
 - name: Display Manager | MaterialAwesome | Install
   aur:
-    use: yay
+    use: "{{ package_manager|default('yay') }}"
     name:
       - awesome
       - ttf-roboto

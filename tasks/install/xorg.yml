@@ -2,7 +2,7 @@
 
 - name: Xorg | Video Drivers | Install packages
   aur:
-    use: yay
+    use: "{{ package_manager|default('yay') }}"
     name:
       - nvidia
       - nvidia-settings
