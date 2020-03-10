@@ -16,7 +16,7 @@
   include: tasks/install/packages/main.yml
 
 - name: Include desktop installation tasks
-  include: tasks/install/desktop.yml
+  include: tasks/install/desktop/main.yml
 
 - name: Include cleanup tasks
   include: tasks/cleanup.yml
