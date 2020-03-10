@@ -1,7 +1,0 @@
----
-
-- name: Arch-I-Files | Include Archdi
-  include: applications/archdi.yml
-
-- name: Arch-I-Files | Include Archfi
-  include: applications/archfi.yml

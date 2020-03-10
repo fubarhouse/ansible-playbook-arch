@@ -9,8 +9,11 @@
 - name: Include mirror tasks
   include: tasks/config/mirrors.yml
 
-- name: Include tasks for archfi & archdi
-  include: tasks/install/archibins.yml
+- name: Include tasks for archfi
+  include: tasks/install/applications/archfi.yml
+
+- name: Include tasks for archdi
+  include: tasks/install/applications/archdi.yml
 
 - name: Include package management installation tasks
   include: tasks/install/packages/main.yml
