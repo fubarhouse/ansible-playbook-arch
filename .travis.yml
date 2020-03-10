@@ -9,11 +9,7 @@ matrix:
     - os: linux
       services: docker
       script:
-        - apt-get install ansible
-        - docker run -td --name archlinux archlinux
-        - docker exec -it archlinux pacman -Sy
-        - docker exec -it archlinux pacman -Sy python3
-        - ansible-playbook -i inventory playbook.yml
+        - docker build -t arch .
 
 notifications:
   slack: fubarhouse:upHoIzmKb4ikkBOt2cOwgKXY

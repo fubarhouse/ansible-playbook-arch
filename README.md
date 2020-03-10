@@ -17,9 +17,12 @@ It's expected that the devices are mounted to the desired configuration when the
 
 A makefile has a series of commands which you can run to test this inside a Docker container.
 ```
+`build` will build the docker container from the Dockerfile
 `start` will start the docker container.
 `setup` will install python in the container.
 `run` will run the playbook for you.
+`run-inside` will run the playbook for you (inside of the container).
+`run-outside` will run the playbook for you (outside of the container).
 `clean` will remove the docker container.
 `all` will run all of the above.
 ```
