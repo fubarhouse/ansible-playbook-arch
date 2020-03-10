@@ -10,10 +10,10 @@
   include: tasks/config/mirrors.yml
 
 - name: Include tasks for archfi
-  include: tasks/install/applications/archfi.yml
+  include: tasks/install/applications/system/archfi.yml
 
 - name: Include tasks for archdi
-  include: tasks/install/applications/archdi.yml
+  include: tasks/install/applications/system/archdi.yml
 
 - name: Include package management installation tasks
   include: tasks/install/packages/main.yml
