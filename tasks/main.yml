@@ -1,0 +1,23 @@
+---
+
+- name: Include setup tasks
+  include: tasks/setup.yml
+
+- name: Include account configuration tasks
+  include: tasks/config/accounts/main.yml
+
+- name: Include mirror tasks
+  include: tasks/config/mirrors.yml
+
+- name: Include tasks for archfi & archdi
+  include: tasks/install/archibins.yml
+
+- name: Include yay tasks
+  include: tasks/install/yay.yml
+  when: package_manager|default('yay') == 'yay'
+
+- name: Include desktop installation tasks
+  include: tasks/install/desktop.yml
+
+- name: Include cleanup tasks
+  include: tasks/cleanup.yml
