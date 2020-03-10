@@ -1,0 +1,15 @@
+---
+
+- name: Aurman | Check
+  stat:
+    path: /usr/bin/aurman
+  register: aurman_binary
+  changed_when: false
+  failed_when: false
+
+- name: Aurman | Install
+  become: yes
+  become_user: aur_builder
+  aur:
+    name: aurman
+  when: not aurman_binary.stat.exists

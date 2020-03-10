@@ -1,0 +1,15 @@
+---
+
+- name: Pacaur | Check
+  stat:
+    path: /usr/bin/pacaur
+  register: pacaur_binary
+  changed_when: false
+  failed_when: false
+
+- name: Pacaur | Install
+  become: yes
+  become_user: aur_builder
+  aur:
+    name: pacaur
+  when: not pacaur_binary.stat.exists

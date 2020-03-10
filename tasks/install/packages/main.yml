@@ -1,0 +1,15 @@
+---
+
+# Tasks are broken up into individual files because of the way the variable
+# package_manager is used - for example the reference to 'yay' installs
+# yay-bin via aur and is also used in package management tasks in this
+# playbook. It also allows for finite customisations per package manager
+# for additional build steps such as dependencies.
+#
+# Support is provided for all package managers the aur-ansible library
+# has support for, which is aurman, pacaur, pikaur, trizen, yay and pacman.
+#
+# Playbook-level support cannot be provided with other package managers.
+# Support can be provided after being supported by this library.
+- name: Include tasks
+  include: "tasks/install/packages/{{ package_manager|default('yay') }}.yml"

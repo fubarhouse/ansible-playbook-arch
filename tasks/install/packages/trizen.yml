@@ -1,0 +1,15 @@
+---
+
+- name: Trizen | Check
+  stat:
+    path: /usr/bin/trizen
+  register: trizen_binary
+  changed_when: false
+  failed_when: false
+
+- name: Trizen | Install
+  become: yes
+  become_user: aur_builder
+  aur:
+    name: trizen
+  when: not trizen_binary.stat.exists

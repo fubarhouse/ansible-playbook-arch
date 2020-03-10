@@ -1,0 +1,15 @@
+---
+
+- name: Pikaur | Check
+  stat:
+    path: /usr/bin/pikaur
+  register: pikaur_binary
+  changed_when: false
+  failed_when: false
+
+- name: Pikaur | Install
+  become: yes
+  become_user: aur_builder
+  aur:
+    name: pikaur
+  when: not pikaur_binary.stat.exists

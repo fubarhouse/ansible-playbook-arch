@@ -12,9 +12,8 @@
 - name: Include tasks for archfi & archdi
   include: tasks/install/archibins.yml
 
-- name: Include yay tasks
-  include: tasks/install/yay.yml
-  when: package_manager|default('yay') == 'yay'
+- name: Include package management installation tasks
+  include: tasks/install/packages/main.yml
 
 - name: Include desktop installation tasks
   include: tasks/install/desktop.yml
