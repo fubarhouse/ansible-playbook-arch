@@ -27,14 +27,6 @@ A makefile has a series of commands which you can run to test this inside a Dock
 `all` will run all of the above.
 ```
 
-Similarly, here are the commands needed to run the above abstraction:
-```shell script
-$ docker run -td --name archlinux archlinux && \
-  docker exec -it archlinux pacman -Sy && \
-  docker exec -it archlinux pacman -Sy python3 && \
-  ansible-playbook -i inventory playbook.yml
-```
-
 ## Notes
 
 I run Arch BTW.
