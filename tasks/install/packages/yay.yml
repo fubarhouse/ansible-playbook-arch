@@ -13,30 +13,3 @@
   aur:
     name: yay-bin
   when: not yay_binary.stat.exists
-
-- name: Yay | Configure
-  aur:
-    use: yay
-    name:
-      - bash
-      - ca-certificates-mozilla
-      - gcc-libs
-      - glib2
-      - glibc
-      - gmp
-      - gnutls
-      - hwids
-      - iana-etc
-      - libarchive
-      - libcap
-      - libgpg-error
-      - libldap
-      - libtasn1
-      - linux-api-headers
-      - ncurses
-      - pacman-mirrorlist
-      - readline
-      - shadow
-      - systemd
-      - systemd-libs
-  when: not yay_binary.stat.exists
