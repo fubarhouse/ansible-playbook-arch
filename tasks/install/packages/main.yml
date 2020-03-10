@@ -13,4 +13,4 @@
 # Support can be provided after being supported by this library.
 - name: Include tasks
   include: "tasks/install/packages/{{ package_manager|default('yay') }}.yml"
-  when: "{{ package_manager|default('yay') }}" != "pacman"
+  when: not "{{ package_manager|default('yay') }}" == "pacman"

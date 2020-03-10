@@ -1,0 +1,11 @@
+---
+
+- name: Install | Recovery
+  become: yes
+  become_user: aur_builder
+  aur:
+    use: "{{ package_manager|default('yay') }}"
+    name:
+      - ddrescue
+      - dd_rescue
+      - partclone

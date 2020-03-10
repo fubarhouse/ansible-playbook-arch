@@ -1,0 +1,11 @@
+---
+
+- name: Install | Browsing
+  become: yes
+  become_user: aur_builder
+  aur:
+    use: "{{ package_manager|default('yay') }}"
+    name:
+      - elinks
+      - links
+      - lynx

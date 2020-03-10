@@ -1,0 +1,16 @@
+---
+
+- name: Include generic installation tasks
+  include: generic/main.yml
+
+- name: Include compression installation tasks
+  include: compression/main.yml
+
+- name: Include network installation tasks
+  include: network/main.yml
+
+- name: Include browsing installation tasks
+  include: browsing/main.yml
+
+- name: Include recovery installation tasks
+  include: recovery/main.yml

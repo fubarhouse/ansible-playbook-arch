@@ -1,0 +1,25 @@
+---
+
+- name: Install | Generic
+  become: yes
+  become_user: aur_builder
+  aur:
+    use: "{{ package_manager|default('yay') }}"
+    name:
+      - nano
+      - vim
+      - vi
+      - pacman-contrib
+      - base-devel
+      - bash-completion
+      - usbutils
+      - lsof
+      - dmidecode
+      - dialog
+      - linux-firmware
+      - nmon
+      - mc
+      - neofetch
+      - powertop
+      - gpm
+      - liveroot

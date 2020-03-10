@@ -1,0 +1,13 @@
+---
+
+- name: Install | Compression
+  become: yes
+  become_user: aur_builder
+  aur:
+    use: "{{ package_manager|default('yay') }}"
+    name:
+      - zip
+      - unzip
+      - unrar
+      - p7zip
+      - lzop
