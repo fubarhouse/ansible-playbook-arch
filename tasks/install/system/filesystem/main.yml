@@ -1,0 +1,32 @@
+---
+
+- name: Install | System | File System
+  become: yes
+  become_user: aur_builder
+  aur:
+    use: "{{ package_manager|default('yay') }}"
+    name: "{{ item }}"
+  with_items:
+    - os-prober
+    - snapper
+    - dosfstools
+    - ntfs-3g
+    - btrfs-progs
+    - exfat-utils
+    - gptfdisk
+    - autofs
+    - fuse2
+    - fuse3
+    - fuseiso
+    - sshfs
+    - cifs-utils
+    - smbclient
+    - nfs-utils
+    - open-iscsi
+    - glusterfs
+    - hfsprogs
+    - mtpfs
+    - unionfs-fuse
+    - nilfs-utils
+    - gvfs
+    - s3fs-fuse
