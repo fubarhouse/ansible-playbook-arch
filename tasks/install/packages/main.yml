@@ -7,10 +7,9 @@
 # for additional build steps such as dependencies.
 #
 # Support is provided for all package managers the aur-ansible library
-# has support for, which is aurman, pacaur, pikaur, trizen, yay and pacman.
+# has support for, which is aurman, pacaur, pikaur, trizen, and yay.
 #
 # Playbook-level support cannot be provided with other package managers.
 # Support can be provided after being supported by this library.
-- name: Include tasks
+- name: Include tasks for package manager install
   include: "tasks/install/packages/{{ package_manager|default('yay') }}.yml"
-  when: not "{{ package_manager|default('yay') }}" == "pacman"
