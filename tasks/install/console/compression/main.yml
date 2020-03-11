@@ -1,6 +1,6 @@
 ---
 
-- name: Install | Compression
+- name: Install | Console | Compression
   become: yes
   become_user: aur_builder
   aur:

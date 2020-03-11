@@ -1,6 +1,6 @@
 ---
 
-- name: Install | Recovery
+- name: Install | Console | Recovery
   become: yes
   become_user: aur_builder
   aur:

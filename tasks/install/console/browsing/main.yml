@@ -1,6 +1,6 @@
 ---
 
-- name: Install | Browsing
+- name: Install | Console | Browsing
   become: yes
   become_user: aur_builder
   aur:

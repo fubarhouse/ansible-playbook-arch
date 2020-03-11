@@ -1,6 +1,6 @@
 ---
 
-- name: Install | Network
+- name: Install | Console | Network
   become: yes
   become_user: aur_builder
   aur:
