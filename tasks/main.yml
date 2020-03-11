@@ -19,7 +19,7 @@
   include: tasks/install/packages/main.yml
 
 - name: Include tasks for applications
-  include: tasks/install/applications/main.yml
+  include: tasks/install/main.yml
 
 - name: Include package management installation tasks
   include: tasks/install/packages/main.yml
