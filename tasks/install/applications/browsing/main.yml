@@ -5,7 +5,8 @@
   become_user: aur_builder
   aur:
     use: "{{ package_manager|default('yay') }}"
-    name:
-      - elinks
-      - links
-      - lynx
+    name: "{{ item }}"
+  with_items:
+    - elinks
+    - links
+    - lynx

@@ -5,16 +5,17 @@
   become_user: aur_builder
   aur:
     use: "{{ package_manager|default('yay') }}"
-    name:
-      - rsync
-      - traceroute
-      - bind-tools
-      - dnsutils
-      - nmap
-      - netdiscover
-      - speedtest-cli
-      - wavemon
-      - net-tools
-      - dsniff
-      - mitmproxy
-      - sslstrip
+    name: "{{ item }}"
+  with_items:
+    - rsync
+    - traceroute
+    - bind-tools
+    - dnsutils
+    - nmap
+    - netdiscover
+    - speedtest-cli
+    - wavemon
+    - net-tools
+    - dsniff
+    - mitmproxy
+    - sslstrip

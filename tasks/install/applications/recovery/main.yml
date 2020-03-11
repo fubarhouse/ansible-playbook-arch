@@ -5,7 +5,8 @@
   become_user: aur_builder
   aur:
     use: "{{ package_manager|default('yay') }}"
-    name:
-      - ddrescue
-      - dd_rescue
-      - partclone
+    name: "{{ item }}"
+  with_items:
+    - ddrescue
+    - dd_rescue
+    - partclone
