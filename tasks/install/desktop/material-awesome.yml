@@ -1,6 +1,8 @@
 ---
 
 - name: Display Manager | MaterialAwesome | Install
+  become: yes
+  become_user: aur_builder
   aur:
     use: "{{ package_manager|default('yay') }}"
     name:
@@ -10,14 +12,10 @@
       - compton
       - i3lock-fancy
       - xclip
-      - gnome-keyring-daemon
-      - policykit-agent
       - pa-applet-git
-      - qt5-styles-gtk2
       - materia-gtk-theme
       - papirus-icon-theme
       - lxappearance
-      - kde-spectacle
       - qt5-styleplugins
 
 - name: Display Manager | MaterialAwesome | Configure
@@ -30,6 +28,8 @@
     path: /etc/environment
     regexp: "{{ item }}"
     line: "{{ item }}"
-    with_items:
-      - 'XDG_CURRENT_DESKTOP=Unity'
-      - 'QT_QPA_PLATFORMTHEME=gtk2'
+  with_items:
+    - 'XDG_CURRENT_DESKTOP=Unity'
+    - 'QT_QPA_PLATFORMTHEME=gtk2'
+
+# gnome-keyring-daemon, policykit-agent, qt5-styles-gtk2, kde-spectacle
