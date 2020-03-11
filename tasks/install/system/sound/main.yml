@@ -1,0 +1,15 @@
+---
+
+- name: Install | System | Sound
+  become: yes
+  become_user: aur_builder
+  aur:
+    use: "{{ package_manager|default('yay') }}"
+    name: "{{ item }}"
+  with_items:
+    - alsa-utils
+    - alsa-plugins
+    - pulseaudio
+    - pulseaudio-alsa
+    - pulseaudio-bluetooth
+    - pulseaudio-equalizer
