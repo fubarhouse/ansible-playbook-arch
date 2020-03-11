@@ -1,0 +1,4 @@
+---
+
+- name: Include application installation tasks
+  include: console/main.yml
