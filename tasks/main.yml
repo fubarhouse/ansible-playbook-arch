@@ -15,6 +15,12 @@
 - name: Include tasks for archdi
   include: tasks/install/applications/system/archdi.yml
 
+- name: Include tasks for package manager
+  include: tasks/install/packages/main.yml
+
+- name: Include tasks for applications
+  include: tasks/install/applications/main.yml
+
 - name: Include package management installation tasks
   include: tasks/install/packages/main.yml
 
