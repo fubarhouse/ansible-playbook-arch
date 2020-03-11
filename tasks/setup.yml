@@ -3,22 +3,12 @@
 - name: Pacman | Install fakeroot
   pacman:
     state: present
-    name: fakeroot
-
-- name: Pacman | Install sudo
-  pacman:
-    state: present
-    name: sudo
-
-- name: Pacman | Install binutils
-  pacman:
-    state: present
-    name: binutils
-
-- name: Pacman | Install diffutils
-  pacman:
-    state: present
-    name: diffutils
+    name: "{{ item }}"
+  with_items:
+    - fakeroot
+    - sudo
+    - binutils
+    - diffutils
 
 - name: Pacman | Add user for aur installation
   user:
