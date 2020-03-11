@@ -1,0 +1,22 @@
+---
+
+- name: Install | System | Print
+  become: yes
+  become_user: aur_builder
+  aur:
+    use: "{{ package_manager|default('yay') }}"
+    name: "{{ item }}"
+  with_items:
+    - cups
+    - ghostscript
+    - cups-pdf
+    - hplip
+    - gutenprint
+    - foomatic-db
+    - foomatic-db-engine
+    - foomatic-db-nonfree
+    - foomatic-db-ppds
+    - foomatic-db-gutenprint-ppds
+    - foomatic-db-nonfree-ppds
+
+# TODO: systemctl enable cups
