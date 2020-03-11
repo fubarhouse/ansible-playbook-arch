@@ -1,0 +1,10 @@
+---
+
+- name: Install | System | Kernel (linux-zen) | Install
+  pacman:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - linux-zen
+    - linux-zen-headers
+    - linux-zen-docs

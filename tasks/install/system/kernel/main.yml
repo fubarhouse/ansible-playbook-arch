@@ -1,0 +1,9 @@
+---
+
+- name: Install | System | Kernel | Include
+  include: "{{ item }}.yml"
+  with_items:
+    - linux
+    - linux-lts
+    - linux-zen
+    - linux-hardened

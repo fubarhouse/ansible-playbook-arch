@@ -1,0 +1,10 @@
+---
+
+- name: Install | System | Kernel (linux-hardened) | Install
+  pacman:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - linux-hardened
+    - linux-hardened-headers
+    - linux-hardened-docs

@@ -1,0 +1,10 @@
+---
+
+- name: Install | System | Kernel (linux-lts) | Install
+  pacman:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - linux-lts
+    - linux-lts-headers
+    - linux-lts-docs
