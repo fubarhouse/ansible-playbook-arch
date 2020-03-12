@@ -2,6 +2,31 @@
 
 # https://github.com/erikdubois/Archi3/tree/master/installation
 
+- name: Display Manager | i3wm | Create user directories
+  file:
+    path: "$HOME/{{ item }}"
+    state: directory
+  with_items:
+    - .icons
+    - .config
+    - .config/gtk-3.0
+    - .config/conky
+    - .config/variety
+    - .config/variety/scripts
+    - .themes
+    - Desktop
+    - Documents
+    - Downloads
+    - DATA
+    - Insync
+    - Music
+    - Pictures
+    - Videos
+    - .fonts
+    - .gimp-2.8
+    - .gimp-2.8/scripts
+    - .gimp-2.8/themes
+
 - name: Display Manager | i3wm | Install
   aur:
     use: "{{ package_manager|default('yay') }}"
