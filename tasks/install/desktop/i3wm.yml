@@ -28,6 +28,8 @@
     - .gimp-2.8/themes
 
 - name: Display Manager | i3wm | Install
+  become: yes
+  become_user: aur_builder
   aur:
     use: "{{ package_manager|default('yay') }}"
     name:
