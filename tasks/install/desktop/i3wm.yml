@@ -1,0 +1,164 @@
+---
+
+- name: Display Manager | i3wm | Install
+  become: yes
+  become_user: aur_builder
+  aur:
+    use: "{{ package_manager|default('yay') }}"
+    name:
+      - i3lock
+      - i3status
+#      - j4-dmenu-desktop
+      - packer
+      - i3blocks
+      - i3-gaps-next-git
+      - archey3
+      - baobab
+      - bleachbit
+      - catfish
+      - clementine
+      - conky
+      - curl
+      - darktable
+      - dconf-editor
+      - dmidecode
+      - evince
+      - evolution
+      - filezilla
+      - firefox
+      - galculator
+      - geary
+      - gimp
+      - git
+      - gksu
+      - glances
+      - gnome-disk-utility
+      - gnome-font-viewer
+      - gnome-screenshot
+      - gnome-system-monitor
+      - gnome-terminal
+      - gnome-tweak-tool
+      - gparted
+      - gpick
+      - grsync
+      - hardinfo
+      - hddtemp
+      - hexchat
+      - htop
+      - inkscape
+      - inxi
+      - lm_sensors
+      - lsb-release
+      - meld
+      - mlocate
+      - mpv
+      - nemo
+      - net-tools
+      - numlockx
+      - openshot
+      - pinta
+      - plank
+      - polkit-gnome
+      - redshift
+      - ristretto
+      - sane
+      - screenfetch
+      - scrot
+      - shotwell
+      - simple-scan
+      - simplescreenrecorder
+      - smplayer
+      - sysstat
+      - terminator
+      - thunar
+      - transmission-cli
+      - transmission-gtk
+      - variety
+      - vlc
+      - vnstat
+      - wget
+      - unclutter
+      - unace
+      - unrar
+      - zip
+      - unzip
+      - sharutils
+      - uudeview
+      - arj
+      - cabextract
+      - file-roller
+      - pulseaudio
+      - pulseaudio-alsa
+      - pavucontrol
+      - alsa-utils
+      - alsa-plugins
+      - alsa-lib
+      - alsa-firmware
+      - gst-plugins-good
+      - gst-plugins-bad
+      - gst-plugins-base
+      - gst-plugins-ugly
+      - gstreamer
+
+- name: Display Manager | i3wm | Create user directories
+  file:
+    path: "$HOME/{{ item }}"
+    state: directory
+  with_items:
+    - .icons
+    - .config
+    - .config/gtk-3.0
+    - .config/conky
+    - .config/variety
+    - .config/variety/scripts
+    - .themes
+    - Desktop
+    - Documents
+    - Downloads
+    - DATA
+    - Insync
+    - Music
+    - Pictures
+    - Videos
+    - .fonts
+    - .gimp-2.8
+    - .gimp-2.8/scripts
+    - .gimp-2.8/themes
+
+- name: Display Manager | i3wm | Clone
+  git:
+    repo: "https://github.com/erikdubois/Archi3.git"
+    dest: "$HOME/.config/i3"
+
+- name: Display Manager | i3wm | Configure
+  copy:
+    remote_src: yes
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+# Globs need work
+#    - src: "$HOME/.config/i3/installation/settings/gimp/scripts/*"
+#      dest: "$HOME/.gimp-2.8/scripts/"
+#    - src: "$HOME/.config/i3/installation/settings/gimp/themes/*"
+#      dest: "$HOME/.gimp-2.8/themes/"
+#    - src: "$HOME/.config/i3/installation/Arc Colora/*"
+#      dest: "$HOME/.themes/"
+#    - src: "$HOME/.config/i3/installation/settings/variety/*"
+#      dest: "$HOME/.config/variety/scripts/"
+    - src: "$HOME/.config/i3/installation/settings/.bash_profile"
+      dest: "$HOME/.bash_profile"
+    - src: "$HOME/.config/i3/installation/settings/.bashrc"
+      dest: "$HOME/.bashrc"
+    - src: "$HOME/.config/i3/installation/settings/.gtkrc-2.0"
+      dest: "$HOME/.gtkrc-2.0"
+    - src: "$HOME/.config/i3/installation/settings/.xinitrc"
+      dest: "$HOME/.xinitrc"
+    - src: "$HOME/.config/i3/installation/settings/.zlogin"
+      dest: "$HOME/.zlogin"
+    - src: "$HOME/.config/i3/installation/settings/.zshrc"
+      dest: "$HOME/.zshrc"
+
+#    - 200-install-extra-software-v1 TODO
+#    - 300-install-themes-icons-cursors-conky-v1 TODO
+#    - 400-install-software-distro-specific-v1 TODO
+#    - 500-install-samba-v1 TODO
