@@ -6,7 +6,6 @@
   aur:
     use: "{{ package_manager|default('yay') }}"
     name:
-#      - virtualbox-guest-utils ?
       - i3lock
       - i3status
 #      - j4-dmenu-desktop
@@ -128,53 +127,38 @@
 
 - name: Display Manager | i3wm | Clone
   git:
-    repo: https://github.com/erikdubois/Archi3.git
-    dest: /tmp/archi3
+    repo: "https://github.com/erikdubois/Archi3.git"
+    dest: "$HOME/.config/i3"
 
-- name: Copy Settings into place
+- name: Display Manager | i3wm | Configure
   copy:
     remote_src: yes
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
   with_items:
 # Globs need work
-#    - src: "/tmp/archi3/installation/settings/gimp/scripts/*"
+#    - src: "$HOME/.config/i3/installation/settings/gimp/scripts/*"
 #      dest: "$HOME/.gimp-2.8/scripts/"
-#    - src: "/tmp/archi3/installation/settings/gimp/themes/*"
+#    - src: "$HOME/.config/i3/installation/settings/gimp/themes/*"
 #      dest: "$HOME/.gimp-2.8/themes/"
-#    - src: "/tmp/archi3/installation/Arc Colora/*"
+#    - src: "$HOME/.config/i3/installation/Arc Colora/*"
 #      dest: "$HOME/.themes/"
-#    - src: "/tmp/archi3/installation/settings/variety/*"
+#    - src: "$HOME/.config/i3/installation/settings/variety/*"
 #      dest: "$HOME/.config/variety/scripts/"
-    - src: "/tmp/archi3/installation/settings/.bash_profile"
+    - src: "$HOME/.config/i3/installation/settings/.bash_profile"
       dest: "$HOME/.bash_profile"
-    - src: "/tmp/archi3/installation/settings/.bashrc"
+    - src: "$HOME/.config/i3/installation/settings/.bashrc"
       dest: "$HOME/.bashrc"
-    - src: "/tmp/archi3/installation/settings/.gtkrc-2.0"
+    - src: "$HOME/.config/i3/installation/settings/.gtkrc-2.0"
       dest: "$HOME/.gtkrc-2.0"
-    - src: "/tmp/archi3/installation/settings/.xinitrc"
+    - src: "$HOME/.config/i3/installation/settings/.xinitrc"
       dest: "$HOME/.xinitrc"
-    - src: "/tmp/archi3/installation/settings/.zlogin"
+    - src: "$HOME/.config/i3/installation/settings/.zlogin"
       dest: "$HOME/.zlogin"
-    - src: "/tmp/archi3/installation/settings/.zshrc"
+    - src: "$HOME/.config/i3/installation/settings/.zshrc"
       dest: "$HOME/.zshrc"
-
-#    - 030-install-xorg-ati TODO
-#    - 030-install-xorg-intel TODO
-#    - 030-install-xorg-nvidia DONE ELSEWHERE
-#    - 030-install-xorg-virtualbox
 
 #    - 200-install-extra-software-v1 TODO
 #    - 300-install-themes-icons-cursors-conky-v1 TODO
 #    - 400-install-software-distro-specific-v1 TODO
 #    - 500-install-samba-v1 TODO
-
-#    - 600-install-personal-settings-folders-v1 TODO
-#    - 610-install-personal-settings-gimp-v1 TODO
-#    - 620-install-personal-settings-arc-colora-v1 TODO
-#    - 630-install-personal-settings-variety-v1 TODO
-#    - 640-install-personal-settings-root-files-v1 TODO
-#    - 650-install-personal-settings-gnome-screenshot-v1 TODO ?
-
-#    - 690-install-personal-settings-i3-configuration-v1 TODO
-#    - 700-firefox-for-dark-themes-settings-v1 TODO
