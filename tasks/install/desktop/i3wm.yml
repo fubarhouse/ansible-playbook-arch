@@ -36,7 +36,7 @@
 #      - virtualbox-guest-utils ?
       - i3lock
       - i3status
-      - j4-dmenu-desktop
+#      - j4-dmenu-desktop
       - packer
       - i3blocks
       - i3-gaps-next-git
