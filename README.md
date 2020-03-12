@@ -27,9 +27,16 @@ A makefile has a series of commands which you can run to test this inside a Dock
 `all` will run all of the above.
 ```
 
+## Plans
+
+* Get it all working
+* Get it _customisable_
+* Use it on bare-metal installations
+* Improve it and maintain it
+
 ## Notes
 
-I run Arch BTW.
+I use Arch BTW.
 
 ## Thanks
 
