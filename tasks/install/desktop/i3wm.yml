@@ -21,6 +21,7 @@
       - curl
       - darktable
       - dconf-editor
+      - dmenu
       - dmidecode
       - evince
       - evolution
